@@ -1,0 +1,5 @@
+# name = input("What is your name?")
+# print(len(input("What is your name?")))
+username = input("What is your name?")
+lenght = len(username)
+print(lenght)
