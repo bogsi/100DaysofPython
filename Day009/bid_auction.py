@@ -39,7 +39,7 @@ while not bidding_finished:
         find_highest_bid(bids)
     elif should_continue == "yes":
         print("Next bidder please.")
-        sleep(2)
+        sleep(0.2)
         clear_console()
 
 # TODO-2: Save data to dictionary {name: price} - THIS WAS IN THE WRONG PLACE
