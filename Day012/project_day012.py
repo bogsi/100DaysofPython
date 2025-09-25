@@ -18,54 +18,64 @@ How to play:
 """
 
 import art
-import random
-print(art.logo)
+from random import randint
 
-# Welcome message and difficulity level choice
-print("Welcome to the Number Guessing Game!")
-rand_num = random.randint(1, 100)
-print("I am thinking of a number between 1 and 100. ")
-level_choice = input("Choose a difficulty. Type 'easy' or 'hard': ")
+def get_difficulty_level():
+    level_choice = input("Choose a difficulty. Type 'easy' or 'hard': ")
+    if level_choice == "easy":
+        return 10
+    elif level_choice == "hard":
+        return 5
+    else:
+        print("Invalid Choice! Defaulting to easy.")
+        return 10
 
-guessed_number = 0
+def get_user_guess():
+    while True:
+        try:
+            user_input = input("Enter a number between 1 and 100 (or 'quit' to exit): ")
+            if user_input.lower() == 'quit':
+                return None
+            return int(user_input)
+        except ValueError:
+            print("Please enter a valid number!")
 
-# Loop for level choice
-if level_choice == "easy":
-    attemps_left = 10
-elif level_choice == "hard":
-    attemps_left = 5
-else:
-    print("Invalid Choice! Defaulting to easy.")
-    attemps_left = 10
+def check_guess(guess, target, attempts_left):
+    if guess > target:
+        print("Too high.")
+        return attempts_left - 1
+    elif guess < target:
+        print("Too low.")
+        return attempts_left - 1
+    else:
+        print(f"You guessed it! The number was {target}")
+        return attempts_left
 
-# While loop with try/catch for ValueError
-while attemps_left > 0 and guessed_number != rand_num:
-    try:
-        user_input = input("Enter a number (or 'quit' to exit): ")
-        if user_input.lower() == 'quit':
+def play_game():
+    print(art.logo)
+    print("Welcome to the Number Guessing Game!")
+    rand_num = randint(1, 100)
+    print("I am thinking of a number between 1 and 100. ")
+    
+    attempts_left = get_difficulty_level()
+    
+    while attempts_left > 0:
+        guessed_number = get_user_guess()
+        
+        if guessed_number is None:
             print("Thanks for playing!")
             break
-        guessed_number = int(user_input)
+            
+        if guessed_number == rand_num:
+            print(f"You guessed it! The number was {rand_num}")
+            break
+            
+        attempts_left = check_guess(guessed_number, rand_num, attempts_left)
+        
+        if attempts_left > 0:
+            print(f"You have {attempts_left} attempts left")
+    
+    if attempts_left == 0:
+        print(f"You lose! The number was {rand_num}")
 
-        if guessed_number < 1 or guessed_number > 100:
-            print("Please enter a number between 1 and 100!")
-            continue
-    except ValueError:
-        print("Please enter a valid number!")
-        continue
-
-    if guessed_number > rand_num:
-        print("Too high.")
-        attemps_left -= 1
-        print(f"You have {attemps_left} attempts left")
-    elif guessed_number < rand_num:
-        print("Too low.")
-        attemps_left -= 1
-        print(f"You have {attemps_left} attempts left")
-    else:
-        print(f"You guessed it! The number was {rand_num}")
-        break
-
-# Check for attemps left
-if attemps_left == 0 and guessed_number != rand_num:
-    print(f"You lose! The number was {rand_num}")
+play_game()
