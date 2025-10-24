@@ -15,9 +15,10 @@ import statistics as st
 #     return st.mean(sample), st.median(sample), st.mode(sample)
 
 
-def add(a, b):
-    result = a + b
-    return result
+# def add(a, b):
+#     result = a + b
+#     return result
 
 
-add(2, 2)
+# add(2, 2)
+

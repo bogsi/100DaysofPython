@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Резултати от търсенето</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Намерени {{ count }} коли</h1>
+    <a href="/">← Ново търсене</a>
+    
+    {% if cars %}
+        {% for car in cars %}
+        <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+            <h3>{{ car.title }}</h3>
+            <p><strong>Цена:</strong> {{ car.price }}</p>
+            <p><strong>Година:</strong> {{ car.year }}</p>
+            <p><strong>Пробег:</strong> {{ car.mileage }}</p>
+            <p><strong>Местоположение:</strong> {{ car.location }}</p>
+            <p><a href="{{ car.url }}" target="_blank">Виж обявата</a></p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Няма намерени коли с тези критерии.</p>
+    {% endif %}
+</body>
+</html>
