@@ -28,10 +28,15 @@ account_b = random.choice(data)
 # Some logic for comparison who has more followers
 while game_should_continue:
     # Generate a random account from the game data
-    account_a = account_b
+    account_a = random.choice(data)
     account_b = random.choice(data)
+
     while account_a == account_b:
         account_b = random.choice(data)
+    # Format the account data into printable format
+    account_name = account_a["name"]
+    account_descr = account_a["description"]
+    account_country = account_a["country"]
     
     print(f"Compare A: {format_data(account_a)}.")
     print(vs)
