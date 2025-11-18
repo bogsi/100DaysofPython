@@ -191,11 +191,7 @@ pyrightconfig.json
 **/python-env/
 **/*-venv/
 
-# Ignore venv structure (but only at root level to be safe)
-/bin/
-/include/
-/lib/
-/share/
+# pyvenv.cfg indicates a virtual environment
 pyvenv.cfg
 
 # End of https://www.toptal.com/developers/gitignore/api/python
