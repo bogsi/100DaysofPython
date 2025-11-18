@@ -186,6 +186,10 @@ pyrightconfig.json
 **/ENV/
 **/env.bak/
 **/venv.bak/
+**/virtualenv/
+**/.virtualenv/
+**/python-env/
+**/*-venv/
 
 # Ignore venv structure (but only at root level to be safe)
 /bin/
