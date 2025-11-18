@@ -133,6 +133,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+pyvenv.cfg
+bin/
+include/
+lib/
 
 # Spyder project settings
 .spyderproject
@@ -174,5 +178,20 @@ poetry.toml
 
 # LSP config files
 pyrightconfig.json
+
+# Ignore Python virtual environment patterns
+**/.venv/
+**/venv/
+**/env/
+**/ENV/
+**/env.bak/
+**/venv.bak/
+
+# Ignore venv structure (but only at root level to be safe)
+/bin/
+/include/
+/lib/
+/share/
+pyvenv.cfg
 
 # End of https://www.toptal.com/developers/gitignore/api/python
